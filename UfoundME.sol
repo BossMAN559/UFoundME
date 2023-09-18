@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.9;
+pragma solidity ^0.8.12;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
@@ -74,7 +74,7 @@ contract UfoundME is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155S
     }
 
     function tokenURI(uint256 tokenId) public view returns (string memory) {
-        require(exists(tokenId), "ERC721Metadata: URI query for nonexistent token");
+        require(exists(tokenId), "ERC1155Metadata: URI query for nonexistent token");
         // reformat to directory structure as below
         string memory folder = Strings.toString(tokenId / 1000); 
         string memory file = Strings.toString(tokenId);

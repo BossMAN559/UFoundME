@@ -1,0 +1,26 @@
+{
+  "name": "You Found ME NFT",
+  "symbol": "UfoME",
+  "description": "NFT of a photo taken when you find me while i am out doing photography",
+  "seller_fee_basis_points": 0,
+  "image": "https://token.brain404.com/images/0/0.jpg",
+  "external_url": "https://brain404.com",
+  "attributes": [
+    {
+      "trait_type": "web",
+      "value": "yes"
+    },
+    {
+      "trait_type": "mobile",
+      "value": "yes"
+   },
+   {
+      "trait_type": "extension",
+      "value": "yes"
+    }
+  ],
+  "collection": {
+     "name": "FoundNFT",
+     "family": "Found"
+  }
+}

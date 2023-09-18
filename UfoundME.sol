@@ -24,6 +24,10 @@ contract UfoundME is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155S
         _grantRole(MINTER_ROLE, msg.sender);
     }
 
+    function contractURI() public pure returns (string memory) {
+        return "https://token.brain404.com/metadata.json";
+    }
+
     function setURI(string memory newuri) public onlyRole(URI_SETTER_ROLE) {
         _setURI(newuri);
     }

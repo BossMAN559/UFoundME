@@ -6,3 +6,6 @@ https://docs.openzeppelin.com/contracts/4.x/wizard
 
 Metaplex documents
 https://docs.metaplex.com/
+
+some more ideas
+https://www.quicknode.com/guides/solana-development/nfts/how-to-deploy-an-nft-collection-on-solana-using-sugar-candy-machine-umi

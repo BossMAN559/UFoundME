@@ -11,7 +11,7 @@ import "@openzeppelin/contracts/utils/Strings.sol";
 /// @custom:security-contact antonio@brain404.com
 contract UfoundME is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155Supply {
     string public name = "UfoundME"; //used by opensea to show name and symbol
-    string public symbol = "UfME";
+    string public symbol = "UfoME";
     string public tokenBaseURI = "https://token.brain404.com/";
     bytes32 public constant URI_SETTER_ROLE = keccak256("URI_SETTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");

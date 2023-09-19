@@ -30,7 +30,7 @@ contract UfoundME is Initializable, ERC1155Upgradeable, AccessControlUpgradeable
     }
 
     function initialize() initializer public {
-        __ERC1155_init("UfoundME");
+        __ERC1155_init("https://token.brain404.com/");
         __AccessControl_init();
         __Pausable_init();
         __ERC1155Burnable_init();
@@ -107,8 +107,8 @@ contract UfoundME is Initializable, ERC1155Upgradeable, AccessControlUpgradeable
         string memory slash = "/";
         return string(
             abi.encodePacked(
-                tokenBaseURI,
-				"json",
+                //tokenBaseURI,
+				"https://token.brain404.com/json",
 				slash,
                 folder,
                 slash,

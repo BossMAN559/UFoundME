@@ -17,7 +17,7 @@ contract UfoundME is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155S
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
 
-    constructor() ERC1155("https://token.brain404.com") {
+    constructor() ERC1155("https://token.brain404.com/") {
         _grantRole(DEFAULT_ADMIN_ROLE, msg.sender);
         _grantRole(URI_SETTER_ROLE, msg.sender);
         _grantRole(PAUSER_ROLE, msg.sender);
@@ -82,6 +82,8 @@ contract UfoundME is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155S
         return string(
             abi.encodePacked(
                 tokenBaseURI,
+		"json",
+		slash,
                 folder,
                 slash,
                 file,

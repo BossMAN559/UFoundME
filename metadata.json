@@ -2,5 +2,7 @@
   "name": "UfoundME",
   "description": "NFTs generated when you find me while i am doing some photography.",
   "image": "https://token.brain404.com/image.png",
-  "external_link": "https://brain404.com"
+  "banner": "external-link-url/banner.png",
+  "external_link": "https://brain404.com",
+  "collaborators": ["0x0000000000000000000000000000000000000000"]
 }

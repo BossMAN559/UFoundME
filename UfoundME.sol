@@ -2,6 +2,7 @@
 pragma solidity ^0.8.12;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
 import "@openzeppelin/contracts/access/AccessControl.sol";
 import "@openzeppelin/contracts/security/Pausable.sol";
 import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
@@ -82,8 +83,8 @@ contract UfoundME is ERC1155, AccessControl, Pausable, ERC1155Burnable, ERC1155S
         return string(
             abi.encodePacked(
                 tokenBaseURI,
-		"json",
-		slash,
+				"json",
+				slash,
                 folder,
                 slash,
                 file,

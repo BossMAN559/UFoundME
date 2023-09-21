@@ -10,19 +10,24 @@ import "@openzeppelin/contracts-upgradeable/token/ERC1155/extensions/ERC1155Supp
 import "@openzeppelin/contracts-upgradeable/utils/StringsUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155HolderUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/token/ERC1155/utils/ERC1155ReceiverUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/security/PullPaymentUpgradeable.sol";
 import "@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
 
 
 /// @custom:security-contact antonio@brain404.com
-contract UfoundME is Initializable, ERC1155Upgradeable, AccessControlUpgradeable, PausableUpgradeable, ERC1155BurnableUpgradeable, ERC1155SupplyUpgradeable, UUPSUpgradeable {
+contract UfoundME is Initializable, ERC1155Upgradeable, AccessControlUpgradeable, PausableUpgradeable, ERC1155BurnableUpgradeable, ERC1155SupplyUpgradeable, UUPSUpgradeable, PullPaymentUpgradeable {
+    using CountersUpgradeable for CountersUpgradeable.Counter;
     string public name = "UfoundME"; //used by opensea to show name and symbol
     string public symbol = "UfoME";
     string public tokenBaseURI = "https://token.brain404.com/";
+    uint256 public constant MINT_PRICE = 0.005 ether;
     bytes32 public constant URI_SETTER_ROLE = keccak256("URI_SETTER_ROLE");
     bytes32 public constant PAUSER_ROLE = keccak256("PAUSER_ROLE");
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
     bytes32 public constant UPGRADER_ROLE = keccak256("UPGRADER_ROLE");
-
+    CountersUpgradeable.Counter private currentTokenID;
 
     /// @custom:oz-upgrades-unsafe-allow constructor
     constructor() {
@@ -116,7 +121,22 @@ contract UfoundME is Initializable, ERC1155Upgradeable, AccessControlUpgradeable
                 ".json")
             );
     }
-    function withdrawBalance (address payable recipient) external onlyRole(DEFAULT_ADMIN_ROLE){
-        recipient.transfer(address(this).balance);
+
+    //function mintTo(address recipient) public payable returns (uint256)
+    //{
+    //    uint256 tokenID = currentTokenID.current();
+    //    require(msg.value == MINT_PRICE, "Transaction value did not equal the mint price");
+    //    currentTokenID.increment();
+    //    uint256 newItemID = currentTokenID.current();
+    //    _safeMint(recipient, newItemID);
+    //    return newItemID;
+    //}
+    function withdrawPayments(address payable payee) 
+        public 
+        override 
+        virtual 
+        onlyRole(DEFAULT_ADMIN_ROLE)
+    {
+        super.withdrawPayments(payee);
     }
 }
